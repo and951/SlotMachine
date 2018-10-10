@@ -1,0 +1,45 @@
+// COLORS
+// Use the color name given by this website: http://chir.ag/projects/name-that-color/
+// Sample: $color-endeavour: #0054A8;
+
+$color-black: #000000;
+$color-white: #ffffff;
+$color-red: #ff3333;
+$color-salmon: #fc7d6d;
+$color-boulder: #7d7d7d;
+$color-blue-bayoux: #4d6773;
+$color-tonys-pink: #e39784;
+$color-mine-shaft: #2b2b2b;
+$color-mercury: rgba(233, 231, 231, 0.9);
+$color-sahara-sand: #f4e481;
+$color-champagne: #faf4cc;
+// FONTS
+// Create the font-family names based on the font-faces imported in /src/assets/fonts.scss
+// Google Fonts
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
+
+// Font Variables
+$roboto-slab: "Josefin Sans", sans-serif;
+
+//Font size
+$size-big-titles: 120px;
+$size-titles: 43px;
+$size-subtitles: 34px;
+$size-normal-text: 25px;
+
+//Slot Variables
+$slot-size: 200px;
+
+//Mobile
+//Slot Variables
+$slot-size-mobile: $slot-size * 0.33;
+//Font size
+$size-mobile-big-titles: 70px;
+$size-mobile-titles: 20px;
+$size-mobile-subtitles: 16px;
+$size-mobile-normal-text: 14px;
+
+//Default colors
+$default-background-color: $color-mine-shaft;
+$default-active-color: $color-blue-bayoux;
+$default-fontColor: $color-boulder;

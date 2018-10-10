@@ -1,0 +1,287 @@
+/* General Styles - Mobile First */
+@import "assets/styles/constants.scss";
+@import "assets/tools/breakpoints.scss";
+@import "assets/vendor/bemify.scss";
+
+body {
+  background-color: $default-background-color;
+  font-family: $roboto-slab;
+}
+html {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  background: $color-black;
+}
+
+h1 {
+  -webkit-animation-name: orangellowPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+em {
+  margin-top: 100px;
+  font-family: "Josefin Sans", sans-serif;
+  color: currentColor;
+  font-size: $size-big-titles;
+  font-style: normal;
+  text-align: center;
+}
+
+@-webkit-keyframes greenPulse {
+  from {
+    background-color: #749a02;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+    background-color: #91bd09;
+    -webkit-box-shadow: 0 0 18px #91bd09;
+  }
+  to {
+    background-color: #749a02;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+}
+
+@-webkit-keyframes bluePulse {
+  from {
+    background-color: #007d9a;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+    background-color: #2daebf;
+    -webkit-box-shadow: 0 0 18px #2daebf;
+  }
+  to {
+    background-color: #007d9a;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+}
+
+@-webkit-keyframes redPulse {
+  from {
+    background-color: #bc330d;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+    background-color: #e33100;
+    -webkit-box-shadow: 0 0 18px #e33100;
+  }
+  to {
+    background-color: #bc330d;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+}
+
+@-webkit-keyframes magentaPulse {
+  from {
+    background-color: #630030;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+    background-color: #a9014b;
+    -webkit-box-shadow: 0 0 18px #a9014b;
+  }
+  to {
+    background-color: #630030;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+}
+
+@-webkit-keyframes orangePulse {
+  from {
+    background-color: #d45500;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+    background-color: #ff5c00;
+    -webkit-box-shadow: 0 0 18px #ff5c00;
+  }
+  to {
+    background-color: #d45500;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+}
+
+@-webkit-keyframes grayPulse {
+  from {
+    background-color: #b6b6b6;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+    background-color: #fbf9f9;
+    -webkit-box-shadow: 0 0 18px #fbf9f9;
+  }
+  to {
+    background-color: #b6b6b6;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+}
+
+@-webkit-keyframes orangellowPulse {
+  from {
+    background-color: #fc9200;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+    background-color: #ffb515;
+    -webkit-box-shadow: 0 0 18px #ffb515;
+  }
+  to {
+    background-color: #fc9200;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+}
+.green {
+  -webkit-animation-name: greenPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+.blue {
+  -webkit-animation-name: bluePulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+.red {
+  -webkit-animation-name: redPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+.yellow {
+  -webkit-animation-name: orangellowPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+.purple {
+  -webkit-animation-name: magentaPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+.gray {
+  -webkit-animation-name: grayPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  text-align: center;
+}
+
+.stars {
+  background: #000 url("../img/stars.png") repeat top center;
+  z-index: 0;
+}
+
+.row {
+  display: block;
+  font-size: 0.75em;
+  margin: 0;
+  //provide padding for small screens
+  padding: 0 1.5em;
+  text-align: center;
+  width: 100%;
+
+  @media (min-width: 37.5em) {
+    //add spacing between stacked  rows
+    margin: 1em 0;
+    //large screen padding
+    padding: 0 2.5em;
+  }
+}
+
+//grid mixin
+$col-width: 65px;
+$gutter-width: 20px;
+$columns: 12;
+
+@for $i from 1 through $columns {
+  // Set container width relative to user variables
+  $width: ($col-width * $columns) + ($gutter-width * ($columns - 1));
+
+  // First, calculate grid size in pixels
+  $grid: ($col-width * $i) + ($gutter-width * ($i - 1));
+
+  // Then, calculate the responsive grid
+  $grid: ($grid / $width) * 100%;
+
+  // Generate the grid classes
+  .grid-#{$i} {
+    width: 100%;
+    @media (min-width: 37.5em) {
+      width: $grid;
+    }
+  }
+}
+
+@media (min-width: 37.5em) {
+  div[class*="grid"] + div[class*="grid"] {
+    margin-left: 2%;
+  }
+}
+
+//set up for all grid columns
+div[class*="grid"] {
+  display: inline-block;
+  margin: 1em 0;
+  padding: 0.5em;
+  vertical-align: top;
+
+  @media (min-width: 37.5em) {
+    margin: 0;
+  }
+}
+
+table {
+  text-align: left;
+}
+
+.aws-btn {
+  --button-default-height: 100px;
+  --button-default-font-size: $size-normal-text;
+  --button-default-border-radius: 25px;
+  --button-horizontal-padding: 50px;
+  --button-raise-level: 7px;
+  --button-hover-pressure: 2;
+  --transform-speed: 0.185s;
+
+  --button-secondary-color: #e33100;
+  --button-secondary-color-dark: #bc330d;
+  --button-secondary-color-light: #ffffff;
+  --button-secondary-color-hover: #e33100;
+  --button-secondary-border: 0px solid #ffffff;
+
+  --button-anchor-color: #f3c8ad;
+  --button-anchor-color-dark: #734922;
+  --button-anchor-color-light: #4c3016;
+  --button-anchor-color-hover: #f1bfa0;
+  --button-anchor-border: 1px solid #8c633c;
+}
+@-webkit-keyframes redPulse {
+  from {
+    background-color: #bc330d;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+  50% {
+    background-color: #e33100;
+    -webkit-box-shadow: 0 0 18px #e33100;
+  }
+  to {
+    background-color: #bc330d;
+    -webkit-box-shadow: 0 0 9px #333;
+  }
+}

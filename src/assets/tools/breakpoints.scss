@@ -1,0 +1,32 @@
+// Mobile-First Breakpoints (based on Bootstrap)
+
+// CONSTANTS
+$extra-small: '480px';
+$small: '768px';
+$medium: '992px';
+$large: '1200px';
+
+// MIXINS
+@mixin min-extra-small {
+  @media only screen and (min-width: $extra-small) {
+    @content;
+  }
+}
+
+@mixin min-small {
+  @media only screen and (min-width: $small) {
+    @content;
+  }
+}
+
+@mixin min-medium {
+  @media only screen and (min-width: $medium) {
+    @content;
+  }
+}
+
+@mixin min-large {
+  @media only screen and (min-width: $large) {
+    @content;
+  }
+}

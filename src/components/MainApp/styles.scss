@@ -1,0 +1,75 @@
+@import "assets/styles/constants.scss";
+@import "assets/tools/breakpoints.scss";
+@import "assets/vendor/bemify.scss";
+
+.container {
+  width: 80%;
+  height: 80%;
+  background-color: $color-mercury;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include min-small {
+    margin-top: 5%;
+    height: 75%;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinButton {
+  border: none;
+  width: $slot-size/2 !important;
+  height: $slot-size/2;
+  font-size: $size-titles;
+  background-color: none;
+  border-color: red;
+  border-radius: 25%;
+  cursor: pointer;
+  color: $color-mercury;
+}
+.separator {
+  height: 40px;
+  width: 90%;
+}
+.coins {
+  text-align: center;
+  border: none;
+  width: $slot-size;
+  height: $slot-size/2;
+  font-size: $size-subtitles;
+  color: $color-mercury;
+  border-radius: 25%;
+  cursor: pointer;
+}
+
+.app-wrap.winner-false {
+  animation: linear 1s spin;
+}
+
+.slot {
+  height: 3 * $slot-size;
+  width: $slot-size * 1.05;
+  overflow: scroll;
+  border: solid;
+}
+
+.slot-item {
+  height: $slot-size;
+  width: $slot-size;
+  border: solid;
+}
+.slotIcon {
+  height: $slot-size;
+  width: $slot-size;
+}
+.dropdown {
+  width: $slot-size;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
