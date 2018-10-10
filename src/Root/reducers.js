@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 
-//import country from '../modules/Country/country'
-//import SlotMachine from '../modules/SlotMachine/SlotMachine'
+
 
 /**
 What I found is that you should consider using Redux when:

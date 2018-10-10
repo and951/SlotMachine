@@ -71,40 +71,46 @@ class MainApp extends Component {
    */
   getPrice(pFinished) {
     if (pFinished == 2) {
-      let winningLane = [], price = this.state.coins, winningRule = "", winningLine = 0
+      let winningLane = [], price = this.state.coins, winningRule = "", winningLine = 0, actualWinningPrice = 0;
       //Analyzing prices in bottom lane
-      let bottomLine = this.state.slotPosition.join(" ");
+      let bottomLine = this.state.slotPosition.map((actualElement, index) => actualElement + this.state.fixedPos[index]).join(" ");
       let bottomWinningPrice = Object.keys(SLOT.THEMES[this.state.actualTheme].payTable[2].rules).filter((currentRule) => { return new RegExp(currentRule).test(bottomLine) })[0];
       if (bottomWinningPrice) {
+        if (actualWinningPrice < SLOT.THEMES[this.state.actualTheme].payTable[2].rules[bottomWinningPrice].price) {
+          actualWinningPrice = SLOT.THEMES[this.state.actualTheme].payTable[2].rules[bottomWinningPrice].price;
+          price = price + actualWinningPrice;
+          winningLane = this.state.slotPosition.map((actualElement, index) => actualElement + this.state.fixedPos[index]);
+          winningLine = 2;
+          winningRule = bottomWinningPrice;
+        }
 
-        price = price + SLOT.THEMES[this.state.actualTheme].payTable[2].rules[bottomWinningPrice].price;
-        winningLane = this.state.slotPosition;
-        winningLine = 2;
-        winningRule = bottomWinningPrice;
-
-      } else {
-
-        //Analyzing prices in top lane
-        let topLine = this.state.slotPosition.map(actualElement => actualElement + 2).join(" ");
-        let topWinningPrice = Object.keys(SLOT.THEMES[this.state.actualTheme].payTable[0].rules).filter((currentRule) => { return new RegExp(currentRule).test(topLine) })[0];
-        if (topWinningPrice) {
-          price = price + SLOT.THEMES[this.state.actualTheme].payTable[0].rules[topWinningPrice].price;
-          winningLane = this.state.slotPosition.map(actualElement => actualElement + 2);
+      }
+      //Analyzing prices in top lane
+      let topLine = this.state.slotPosition.map((actualElement, index) => actualElement + this.state.fixedPos[index] - 2).join(" ");
+      let topWinningPrice = Object.keys(SLOT.THEMES[this.state.actualTheme].payTable[0].rules).filter((currentRule) => { return new RegExp(currentRule).test(topLine) })[0];
+      if (topWinningPrice) {
+        if (actualWinningPrice < SLOT.THEMES[this.state.actualTheme].payTable[0].rules[topWinningPrice].price) {
+          actualWinningPrice = SLOT.THEMES[this.state.actualTheme].payTable[0].rules[topWinningPrice].price;
+          price = price + actualWinningPrice;
+          winningLane = this.state.slotPosition.map((actualElement, index) => actualElement + this.state.fixedPos[index] - 2).join(" ");
           winningLine = 0;
           winningRule = topWinningPrice;
-        } else {
-          //Analyzing prices in center lane
-          let centerLine = this.state.slotPosition.map(actualElement => actualElement + 1).join(" ");
-          let centerWinningPrice = Object.keys(SLOT.THEMES[this.state.actualTheme].payTable[1].rules).filter((currentRule) => { return new RegExp(currentRule).test(centerLine) })[0];
-          if (centerWinningPrice) {
+        }
 
-            price = price + SLOT.THEMES[this.state.actualTheme].payTable[1].rules[centerWinningPrice].price;
-            winningLane = this.state.slotPosition.map(actualElement => actualElement + 1);
-            winningLine = 1;
-            winningRule = centerWinningPrice;
-          }
+      }
+      //Analyzing prices in center lane
+      let centerLine = this.state.slotPosition.map((actualElement, index) => actualElement + this.state.fixedPos[index] - 1).join(" ");
+      let centerWinningPrice = Object.keys(SLOT.THEMES[this.state.actualTheme].payTable[1].rules).filter((currentRule) => { return new RegExp(currentRule).test(centerLine) })[0];
+      if (centerWinningPrice) {
+        if (actualWinningPrice < SLOT.THEMES[this.state.actualTheme].payTable[1].rules[centerWinningPrice].price) {
+          actualWinningPrice = SLOT.THEMES[this.state.actualTheme].payTable[1].rules[centerWinningPrice].price;
+          price = price + actualWinningPrice;
+          winningLane = this.state.slotPosition.map((actualElement, index) => actualElement + this.state.fixedPos[index] - 1).join(" ");
+          winningLine = 1;
+          winningRule = centerWinningPrice;
         }
       }
+
 
 
       this.setState({

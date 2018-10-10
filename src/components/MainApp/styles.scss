@@ -55,7 +55,7 @@
 .slot {
   height: 3 * $slot-size;
   width: $slot-size * 1.05;
-  overflow: scroll;
+  overflow: hidden;
   border: solid;
 }
 

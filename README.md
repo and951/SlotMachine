@@ -1,6 +1,6 @@
 # Slot Machine
 
-[![N|Solid](./src/assets/img/title.png)]()
+[![N|Solid](./src/assets/img/demo.gif)]()
 
 
 
