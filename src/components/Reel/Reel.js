@@ -63,13 +63,13 @@ class Reel extends React.Component {
    * @param {timestamp} pTimestamp 
    */
   goToSlot(pTimestamp) {
-    if (this.state.actualPos == this.state.desiredPos) {
+    let speed = this.state.maxSpeed * 0.1;
+    if (this.state.actualPos > this.state.desiredPos - speed && this.state.actualPos < this.state.desiredPos + speed) {
       this.props.onEnd();
       return;
     }
-    let speed = this.state.maxSpeed * 0.1;
-    let actualPosition = this.state.actualPos < this.state.scrollHeight - this.state.clientHeight ? this.state.actualPos + speed : 0;
 
+    let actualPosition = this.state.actualPos < this.state.scrollHeight - this.state.clientHeight ? this.state.actualPos + speed : 0;
     this.setState({
       actualPos: actualPosition
     }, () => {
@@ -89,7 +89,7 @@ class Reel extends React.Component {
   componentDidUpdate(prevProps) {
 
     if (this.props == prevProps || !this.props.turn) return;
-    console.log("TARGET ", this.props.target);
+
     this.setScrollPos(this.state.slotSize * 2);
 
     let desiredPos = this.state.slotSize * this.props.target;
@@ -97,11 +97,9 @@ class Reel extends React.Component {
     let startTime = Date.now();
     let scrollHeight = findDOMNode(this.containerReference).scrollHeight;
     let clientHeight = this.state.clientHeight;
-
-
     this.setState({
       startTime,
-      desiredPos,
+      desiredPos: desiredPos > scrollHeight - clientHeight ? scrollHeight - clientHeight - 1 : desiredPos,
       scrollHeight,
       clientHeight
     }, () => {

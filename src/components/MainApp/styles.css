@@ -47,7 +47,7 @@
 .slot {
   height: 600px;
   width: 210px;
-  overflow: hidden;
+  overflow: scroll;
   border: solid; }
 
 .slot-item {
